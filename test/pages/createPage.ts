@@ -1,4 +1,6 @@
 import { Page, expect, Locator } from "playwright/test";
+const fs = require("fs");
+import sharp from "sharp";
 
 export class CreatePage {
   readonly page: Page;
@@ -92,9 +94,31 @@ export class CreatePage {
 
   async downloadImage() {
     await this.downloadButton.click();
+    //This does not work because when you try download the image an error occurs - bug
+  }
+
+  async assertDownloaded(): Promise<string> {
+    const [download] = await Promise.all([
+      this.page.waitForEvent("download"),
+      this.downloadImage(),
+    ]);
+    const path = await download.path();
+    const stats = fs.statSync(path);
+    const fileSizeInBytes = stats.size;
+    expect(fileSizeInBytes).toBeGreaterThan(0);
+    return path;
+    //This does not work because when you try download the image an error occurs - bug
   }
 
   async assertDownloadedImageSize() {
-    //This does not work because when you try download the image an error occurs
+    const path = await this.assertDownloaded();
+    const image = sharp(path);
+    const metadata = await image.metadata();
+    const { width, height } = metadata;
+    const expectedWidth = 2056;
+    const expectedHeight = 1368;
+    expect(width).toBe(expectedWidth);
+    expect(height).toBe(expectedHeight);
+    //This does not work because when you try download the image an error occurs - bug
   }
 }
