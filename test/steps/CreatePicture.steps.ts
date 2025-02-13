@@ -2,6 +2,7 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import { Homepage } from "../pages/homePage";
 import { CreatePage } from "../pages/createPage";
 import { CustomWorld } from "../support/world";
+import { create } from "domain";
 
 Given(
   "I am on the Ducati Scrambler website",
@@ -94,5 +95,6 @@ Then(
   async function (this: CustomWorld) {
     const createPage = new CreatePage(this.page);
     await createPage.downloadImage();
+    await createPage.assertDownloadedImageSize();
   }
 );

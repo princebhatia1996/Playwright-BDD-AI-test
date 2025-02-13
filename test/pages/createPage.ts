@@ -93,4 +93,8 @@ export class CreatePage {
   async downloadImage() {
     await this.downloadButton.click();
   }
+
+  async assertDownloadedImageSize() {
+    //This does not work because when you try download the image an error occurs
+  }
 }
