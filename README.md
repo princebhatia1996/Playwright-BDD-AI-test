@@ -21,6 +21,11 @@ This project is a Behavior-Driven Development (BDD) framework using Playwright a
    ```
    npm test
    ```
+4. **Run the reporter:**
+   To run the reporter to see which tests failed and passed:
+   ```
+   npm run test:report
+   ```
 
 ## Usage Guidelines
 
