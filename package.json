@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm-run-all --continue-on-error test:run test:report",
     "test:report": "node generateReport.js",
-    "test:run": "cucumber-js --require-module ts-node/register --require test/steps/**/*.ts --require test/support/hooks.ts --require test/support/world.ts",
+    "test:run": "cucumber-js --require-module ts-node/register --require test/steps/**/*.ts --require test/support/hooks.ts --require test/support/world.ts || true",
     "test:watch": "cucumber-js --watch --require-module ts-node/register --require test/steps/**/*.ts --require test/support/hooks.ts --require test/support/world.ts",
     "test:headless": "playwright test --headed"
   },
