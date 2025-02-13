@@ -95,6 +95,7 @@ Then(
   async function (this: CustomWorld) {
     const createPage = new CreatePage(this.page);
     await createPage.downloadImage();
+    await createPage.assertDownloaded();
     await createPage.assertDownloadedImageSize();
   }
 );
