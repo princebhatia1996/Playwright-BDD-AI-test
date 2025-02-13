@@ -4,7 +4,9 @@
   "description": "A BDD project using Playwright and Cucumber for the Ducati Scrambler website.",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --require-module ts-node/register --require test/steps/**/*.ts --require test/support/hooks.ts --require test/support/world.ts",
+    "test": "npm-run-all --continue-on-error test:run test:report",
+    "test:report": "node generateReport.js",
+    "test:run": "cucumber-js --require-module ts-node/register --require test/steps/**/*.ts --require test/support/hooks.ts --require test/support/world.ts",
     "test:watch": "cucumber-js --watch --require-module ts-node/register --require test/steps/**/*.ts --require test/support/hooks.ts --require test/support/world.ts",
     "test:headless": "playwright test --headed"
   },
@@ -16,6 +18,8 @@
     "@cucumber/cucumber": "^11.2.0",
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.1",
+    "cucumber-html-reporter": "^7.2.0",
+    "npm-run-all": "^4.1.5",
     "ts-node": "^10.9.2",
     "typescript": "^4.5.4"
   },
