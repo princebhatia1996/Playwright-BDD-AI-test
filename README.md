@@ -2,6 +2,25 @@
 
 This project is a Behavior-Driven Development (BDD) framework using Playwright and Cucumber in TypeScript. It is designed to automate the testing of the Ducati Scrambler website and its image creation functionality.
 
+## Folder Structure
+
+```
+Playwright-BDD-AI-test
+└── Playwright-BDD-AI-test
+|   ├── features
+|       └── scrambler.feature
+|   ├── test
+|       ├── pages
+|           └── index.ts
+|       ├── steps
+|           └── index.ts
+|       └── support
+|           └── hooks.ts
+|   ├── package.json
+|   ├── tsconfig.json
+|   └── README.md
+```
+
 ## Setup Instructions
 
 1. **Clone the repository:**
